@@ -146,3 +146,11 @@ Nodemon is a tool that automatically restarts your Node.js application when file
 }
 
 To render HTML files using Express.js, store your EJS files in a views directory and use the .ejs extension.
+----------------------------
+What is a Template engine?
+A template engine in Node.js enables you to use static  template files and inject dynamic data at runtime to generate HTML markup sent to the client's browser.
+ex.. EJS, Pug, Handler.js, Nunjucks...
+----------------------------
+----------------------------
+----------------------------
+----------------------------
