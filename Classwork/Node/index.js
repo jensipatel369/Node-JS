@@ -13,10 +13,16 @@ app.use(express.urlencoded({ extended: true }));
 
 let data = [];
 
+// Middleware
+const middle = (req, res, next) => {
+    console.log("Middleware executed...");
+    next();
+}
+
 app.get("/", (req, res) => {
     res.render("index", { data })
 })
-app.post("/addData", (req, res) => {
+app.post("/addData", middle, (req, res) => {
     let obj = {
         id: Date.now(),
         ...req.body

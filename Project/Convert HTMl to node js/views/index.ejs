@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Web Player: Music for everyone</title>
+    <!--css-->
+    <link rel="stylesheet" href="/style.css">
+    <!--css-->
+
+    <!--favicon-->
+    <link rel="icon" href="/img/logo spotify.png">
+    <!--favicon-->
+
+    <!--icon-->
+    <link rel="stylesheet" href="https:/cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--icon-->
+</head>
+<body>
+<section id="full-website">
+    <nav>
+        <div class="logo">
+            <i class="fa-brands fa-spotify" style="color: #ffffff;"></i>
+            <img src="/img/logo.png" alt="">
+        </div>
+        <div class="center">
+            <div class="home">
+                <i class="fa-solid fa-house" style="color: #ffffff;"></i>
+            </div>
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass" style="color: #cfcfcf;"></i>
+                <input type="search"  placeholder="What do you want to play?">
+                <span></span>
+                <i class="fa-solid fa-box" style="color: #cfcfcf;"></i>
+            </div>
+        </div>
+        <div class="last">
+            <button id="sign">Sign up</button>
+            <button>Log in</button>
+        </div>
+    </nav>
+    <!--nav-->
+
+    <!--main-->
+    <div id="main">
+    <!--left-->
+    <div id="left">
+        <div class="library">
+            <h4><svg xmlns="http:/www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24"><path fill="#c2c2c2" fill-rule="evenodd" d="M17.316 4.052a.99.99 0 0 0-.9.14c-.262.19-.416.495-.416.82v8.566a4.6 4.6 0 0 0-2-.464c-1.99 0-4 1.342-4 3.443S12.01 20 14 20s4-1.342 4-3.443V6.801c.538.5 1 1.219 1 2.262c0 .56.448 1.013 1 1.013s1-.453 1-1.013c0-1.905-.956-3.18-1.86-3.942a6.4 6.4 0 0 0-1.636-.998l-.166-.063l-.013-.005l-.005-.002h-.002zM4 5.012c-.552 0-1 .454-1 1.013c0 .56.448 1.013 1 1.013h9c.552 0 1-.453 1-1.013s-.448-1.012-1-1.012H4Zm0 4.051c-.552 0-1 .454-1 1.013c0 .56.448 1.013 1 1.013h9c.552 0 1-.454 1-1.013c0-.56-.448-1.013-1-1.013zm0 4.05c-.552 0-1 .454-1 1.014c0 .559.448 1.012 1 1.012h4c.552 0 1-.453 1-1.012c0-.56-.448-1.013-1-1.013z" clip-rule="evenodd"/></svg>
+                Your Library</h4>
+            <div class="plus">
+            <i class="fa-solid fa-plus" style="color: #c2c2c2;"></i>
+            </div>
+        </div>
+        <div class="playlist">
+            <div class="cover">
+                <h5>Create your first playlist</h5>
+                <h4>It's easy,we'll help you</h4>
+                <button>Create playlist</button>
+            </div>
+            <div class="cover">
+                <h5>Let's find some podcasts to follow</h5>
+                <h4>We'll keep you updated on new episodes</h4>
+                <button>Browse podcasts</button>
+            </div>
+        </div>
+        <div class="anchor">
+            <a href="#">Legal</a>
+            <a href="#">Safety & Privacy Center</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookies</a><br>
+            <a href="#">About Ads</a>
+            <a href="#">Accessibility</a><br>
+            <a href="#">Cookies</a>
+        </div>
+        <div class="english">
+        <button><svg xmlns="http:/www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="#fff" fill-rule="evenodd" d="M8 14.5c.23 0 .843-.226 1.487-1.514c.306-.612.563-1.37.742-2.236H5.771c.179.866.436 1.624.742 2.236C7.157 14.274 7.77 14.5 8 14.5M5.554 9.25a14.4 14.4 0 0 1 0-2.5h4.892a14.5 14.5 0 0 1 0 2.5zm6.203 1.5c-.224 1.224-.593 2.308-1.066 3.168a6.53 6.53 0 0 0 3.2-3.168zm2.623-1.5h-2.43a16 16 0 0 0 0-2.5h2.429a6.5 6.5 0 0 1 0 2.5Zm-10.331 0H1.62a6.5 6.5 0 0 1 0-2.5h2.43a16 16 0 0 0 0 2.5Zm-1.94 1.5h2.134c.224 1.224.593 2.308 1.066 3.168a6.53 6.53 0 0 1-3.2-3.168m3.662-5.5h4.458c-.179-.866-.436-1.624-.742-2.236C8.843 1.726 8.23 1.5 8 1.5s-.843.226-1.487 1.514c-.306.612-.563 1.37-.742 2.236m5.986 0h2.134a6.53 6.53 0 0 0-3.2-3.168c.473.86.842 1.944 1.066 3.168M5.31 2.082c-.473.86-.842 1.944-1.066 3.168H2.109a6.53 6.53 0 0 1 3.2-3.168ZM8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0" clip-rule="evenodd"/></svg> English</button>
+    </div>
+    </div>
+    <!--left-->
+
+    <!--right-->
+    <div id="right">
+        <div class="line">
+            <div class="first">
+                <h1>Popular artists</h1>
+                <button>Show all</button>
+            </div>
+            <div class="text">
+            <div class="box">
+                <img src="/puimg/1.jpg" alt="" id="img">
+                <h3>Pritam</h3>
+                <h4>Artist</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/2.jpg" alt="" id="img">
+                <h3>Arijit Singh</h3>
+                <h4>Artist</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/3.jpg" alt="" id="img">
+                <h3>Sachin-Jigar</h3>
+                <h4>Artist</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/4.jpg" alt="" id="img">
+                <h3>A.R. Rahman</h3>
+                <h4>Artist</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/5.jpg" alt="" id="img">
+                <h3>Vishal-Shekhar</h3>
+                <h4>Artist</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/6.jpg" alt="" id="img">
+                <h3>Atif Aslam</h3>
+                <h4>Artist</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            </div>
+        </div>
+        <div class="line">
+            <div class="first">
+                <h1>Popular albums and singles</h1>
+                <button>Show all</button>
+            </div>
+            <div class="text">
+            <div class="box">
+                <img src="/img/7.jpg" alt="">
+                <h3>GLORY</h3>
+                <h4>Yo Yo Honey Singh</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/8.jpg" alt="">
+                <h3>Aashiqui 2</h3>
+                <h4>Mithoon, Ankit tiwari, Jeet Gannguli</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/9.jpg" alt="">
+                <h3>Who (Remixes)</h3>
+                <h4>Jimin</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/10.jpg" alt="">
+                <h3>Yeh Jawaani Hai Deewani</h3>
+                <h4>Pritam</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/11.jpg" alt="">
+                <h3>Making Memories</h3>
+                <h4>Karan Aujla, lkky</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/12.jpg" alt="">
+                <h3>Jo Tum Mere Ho</h3>
+                <h4>Anuv Jain</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            </div>
+        </div>
+        <div class="line">
+            <div class="first">
+                <h1>Popular radio</h1>
+                <button>Show all</button>
+            </div>
+            <div class="text">
+            <div class="box">
+                <img src="/img/13.jpg" alt="">
+                <h4>With Sachin-Jigar, Amit Trivedi, Mithoo...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/14.jpg" alt="">
+                <h4>With Karan Aujla, Shubh, Sidhu Moose...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/15.jpg" alt="">
+                <h4>With Abhijeet, Jatin-Lalit, Kumar Sanu an...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/16.jpg" alt="">
+                <h4>With A.R.Rahman, Vishal-Shekhar, Atif...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/17.jpg" alt="">
+                <h4>With Pritam, Mohit Chauhan, Armaan...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/18.jpg" alt="">
+                <h4>With Badshah, Diljit Dosanjh, Neha Kakka...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            </div>
+        </div>
+        <div class="line">
+            <div class="first">
+                <h1>Featured Charts</h1>
+                <button>Show all</button>
+            </div>
+            <div class="text">
+            <div class="box">
+                <img src="/img/19.jpg" alt="">
+                <h4>Your weekly update of the most played trac...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/20.jpg" alt="">
+                <h4>Your weekly update of the most played trac...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/21.jpg" alt="">
+                <h4>Your weekly update of the most played trac...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/22.jpg" alt="">
+                <h4>Your weekly update of the most played trac...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/23.jpg" alt="">
+                <h4>Your weekly update of the most played trac...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/24.jpg" alt="">
+                <h4>Your weekly update of the most played trac...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            </div>
+        </div>
+        <div class="line">
+            <div class="first">
+                <h1>India's Best</h1>
+                <button>Show all</button>
+            </div>
+            <div class="text">
+            <div class="box">
+                <img src="/img/25.jpg" alt="">
+                <h4>Hottest tracks from your favourite | - Pop...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/26.jpg" alt="">
+                <h4>Bollywood Central, jab baje toh seedha dil k...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/27.jpg" alt="">
+                <h4>Ultimate 101 Punjabi Hits with Arjan Dhillon</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/28.jpg" alt="">
+                <h4>Finest collection of Tamil Music from the...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/29.jpg" alt="">
+                <h4>The finest set of<br>Telugu music from th...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            <div class="box">
+                <img src="/img/30.jpg" alt="">
+                <h4>Our editor's picks for best Malyalam song...</h4>
+                <i class="fa-solid fa-circle-play" style="color: #1cd85f; background-color: black; border-radius: 50%;"></i>
+            </div>
+            </div>
+        </div>
+
+        <!--footer-->
+        <footer>
+            <div class="footer">
+                <div class="left">
+                    <ul>
+                        <li>Company</li>
+                        <li>About</li>
+                        <li>Jobs</li>
+                        <li>For the record</li>
+                    </ul>
+                    <ul>
+                        <li>Communinities</li>
+                        <li>For Artists</li>
+                        <li>Developers</li>
+                        <li>Advertising</li>
+                        <li>Investors</li>
+                        <li>Vendors</li>
+                    </ul>
+                    <ul>
+                        <li>Useful links</li>
+                        <li>Support</li>
+                        <li>Free Mobile App</li>
+                    </ul>
+                    <ul>
+                        <li>Spotify Plans</li>
+                        <li>Premium Individual</li>
+                        <li>Premium Duo</li>
+                        <li>Premium Family</li>
+                        <li>Premium Student</li>
+                        <li>Spotify Free</li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <div class="icon">
+                        <i class="fa-brands fa-instagram" style="color: #ffffff;"></i>
+                    </div>
+                    <div class="icon">
+                        <i class="fa-brands fa-twitter" style="color: #ffffff;"></i>
+                    </div>
+                    <div class="icon">
+                        <i class="fa-brands fa-facebook" style="color: #ffffff;"></i>
+                    </div>
+                </div>
+            </div>
+            <h6>© 2025 Spotify AB</h6>
+        </footer>
+        <!--footer-->
+    </div>
+    <!--right-->
+    </div>
+    <!--main-->
+
+    <!--gredient-->
+    <div id="gredient">
+        <div class="preview">
+            <h2>Preview of Spotify</h2>
+            <h3>Sign up to get unlimited songs and podcasts with occasional ads. No credit card needed.</h3>
+        </div>
+        <button>Sign up free</button>
+    </div>
+    <!--gredient-->
+</section>    
+</body>
+</html>
