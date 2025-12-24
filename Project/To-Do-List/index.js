@@ -13,10 +13,16 @@ app.use(express.urlencoded({ extended: true }));
 
 let data = [];
 
+// Middleware
+const middle = (req,res,next)=>{
+    console.log("Hello, I am Middleware...")
+    next();
+}
+
 app.get("/", (req, res) => {
     res.render("index", { data })
 })
-app.post("/addData", (req, res) => {
+app.post("/addData",middle,(req, res) => {
     let obj = {
         id: Date.now(),
         ...req.body
@@ -35,9 +41,9 @@ app.get("/editData", (req, res) => {
 })
 app.post("/updateData", (req, res) => {
     singleData = data.find((item) => item.id == req.body.id);
-    singleData.name = req.body.name;
-    singleData.age = req.body.age;
-    singleData.city = req.body.city;
+    singleData.task = req.body.task;
+    singleData.priority = req.body.priority;
+    singleData.date = req.body.date;
     res.redirect("/");
 })
 

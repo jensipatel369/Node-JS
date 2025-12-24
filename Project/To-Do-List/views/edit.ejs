@@ -3,16 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD in Express</title>
+    <title>Edit To-Do List</title>
 </head>
-<body>
-    <h1>Edit in Express..!</h1>
-    <form action="/updateData" method="post">
-        <input type="text" value="<%=singleData.id%>" name="id" hidden>
-        <input type="text" value="<%=singleData.name%>" name="name" placeholder="Enter your name">
-        <input type="text" value="<%=singleData.age%>" name="age" placeholder="Enter your age">
-        <input type="text" value="<%=singleData.city%>" name="city" placeholder="Enter your city">
-        <button type="submit">Update Data</button>
+
+<body style="
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:#eef1f4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+">
+
+<div style="
+    width:25%;
+    background:#ffffff;
+    padding:40px 120px;
+    border-radius:14px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    text-align:center;
+">
+
+    <h1 style="
+        color:#2c3e50;
+        margin-bottom:35px;
+        letter-spacing:1px;
+    ">
+        Edit To-Do Task
+    </h1>
+
+    <form action="/updateData" method="post" style="
+        display:flex;
+        flex-direction:column;
+        gap:18px;
+    ">
+
+        <!-- Hidden ID -->
+        <input type="hidden" value="<%=singleData.id%>" name="id">
+
+        <!-- Task -->
+        <input type="text" value="<%=singleData.task%>" name="task" placeholder="Enter your task"
+            style="
+                padding:14px;
+                border:1px solid #ccd1d9;
+                border-radius:8px;
+                font-size:14px;
+                outline:none;
+                text-align:center;
+            ">
+
+        <!-- Priority -->
+        <select name="priority"
+            style="
+                padding:14px;
+                border:1px solid #ccd1d9;
+                border-radius:8px;
+                font-size:14px;
+                outline:none;
+                text-align:center;
+            ">
+            <option value="High" <%= singleData.priority=="High" ? "selected" : "" %>>High</option>
+            <option value="Medium" <%= singleData.priority=="Medium" ? "selected" : "" %>>Medium</option>
+            <option value="Low" <%= singleData.priority=="Low" ? "selected" : "" %>>Low</option>
+        </select>
+
+        <!-- Date -->
+        <input type="date" value="<%=singleData.date%>" name="date"
+            style="
+                padding:14px;
+                border:1px solid #ccd1d9;
+                border-radius:8px;
+                font-size:14px;
+                outline:none;
+                text-align:center;
+            ">
+
+        <!-- Buttons -->
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            gap:15px;
+            margin-top:15px;
+        ">
+
+            <button type="submit"
+                style="
+                    width:50%;
+                    background:#2c3e50;
+                    color:white;
+                    border:none;
+                    padding:14px;
+                    border-radius:8px;
+                    cursor:pointer;
+                    font-size:15px;
+                ">
+                Update
+            </button>
+
+            <a href="/" style="width:50%; text-decoration:none;">
+                <button type="button"
+                    style="
+                        width:100%;
+                        background:#7f8c8d;
+                        color:white;
+                        border:none;
+                        padding:14px;
+                        border-radius:8px;
+                        cursor:pointer;
+                        font-size:15px;
+                    ">
+                    Cancel
+                </button>
+            </a>
+
+        </div>
+
     </form>
+
+</div>
+
 </body>
 </html>
