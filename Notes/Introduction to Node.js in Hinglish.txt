@@ -1,0 +1,92 @@
+Introduction to Node.js
+----------------------------
+1. What is Node.js?
+-> Node.js ek JavaScript runtime hai jo browser ke bahar JS chalata hai. Fast hota hai kyunki V8 engine use karta hai.
+
+Founder :- Ryan Dahl
+Launch :- 2009
+----------------------------
+2. What is a Server?
+-> Ek system hota hai jo client ko data ya service deta hai.
+----------------------------
+3. What is Cross-Platform?
+-> Cross-platform ka matlab hota hai aisa software jo Windows, macOS aur Linux jaise multiple operating systems par bina dobara likhe chal sakta hai.
+----------------------------
+4. What is Server-Side Scripting?
+-> Server-side scripting mein code server par run hota hai, browser par nahi. Isse database se data laakar user ko dynamic aur customized web pages milte hain.
+----------------------------
+5. Alternatives to Node.js :-
+-> 1.PHP 
+   2.Java 
+   3.Ruby
+   4.Python
+----------------------------
+6. Uses of Node.js :-
+-> 1.Real-time applications (e.g., chat applications, online gaming) 
+   2.Data streaming
+   3.Wireless connectivity
+   4.System monitoring dashboards
+   5.Chatbots
+   6.RESTful APIs
+----------------------------
+7. What is REPL(Read–Eval–Print Loop)?
+-> REPL ek interactive shell hai jo Node.js ke saath aata hai aur terminal me run hota hai. Isme aap JavaScript code line by line run kar sakte ho.
+
+1.Read: User ka input leta hai
+2.Eval: Code ko execute karta hai
+3.Print: Result show karta hai
+4.Loop: Ye process repeat hota rehta hai jab tak aap exit na karo (Ctrl+C ya Ctrl+D)
+----------------------------
+8. What is Global Objects in Node.js?
+-> Node.js me kuch global objects hote hain jo bina import kiye kahin bhi use ho sakte hain.
+
+1.__filename: Current file ka complete path batata hai
+2.__dirname: Current file ke folder ka complete path batata hai
+----------------------------
+9. Node.js Modules types and Example.
+-> Types of Modules :-
+   1.Core Modules
+   2.Local Modules
+   3.Third-Party Modules
+
+1.Core Module :- Core modules Node.js me built-in hote hain, inhe install karne ki zarurat nahi hoti. Inhe require() se use karte hain.
+
+Examples :-
+1.http: HTTP server banane ke liye
+2.fs: File system ke saath kaam karne ke liye
+3.path: File aur folder paths handle karne ke liye
+4.querystring: URL query string parse/format karne ke liye
+5.url: URL ko parse aur handle karne ke liye
+
+
+2.Local Modules :- Local modules user-defined hote hain jo Node.js app ke andar banaye jaate hain. Ye specific functionality ko alag files ya folders me organize karte hain.
+
+
+3.Third-Party Modules :- Third-party modules npm se milte hain aur project me install kiye jaate hain.
+
+Examples :-
+1.mongoose: MongoDB ke saath kaam karne ke liye
+2.multer: File upload handle karne ke liye
+3.passport: Authentication ke liye
+4.cookie-parser: Cookies parse karne ke liye
+----------------------------
+10. What is Express.js?
+-> Express.js ek lightweight Node.js framework hai jo server banana aur HTTP request/response handle karna easy banata hai.
+----------------------------
+11. MVC Framework :-
+-> 1.Model(M) :- Data aur logic handle karta hai.
+   2.View(V) :- User ko data show karta hai (UI).
+   3.Controller(C) :- User input handle karta hai.
+   4.EJS (Embedded JavaScript) :- EJS ek templating engine hai jo JavaScript se dynamic HTML banata hai. Express ke saath use hota hai.
+----------------------------
+12. Installation of Express.js and EJS :- 
+-> 1.npm install express
+   2.npm install ejs
+----------------------------
+13. What is Nodemon?
+-> File change hote hi server auto-restart karta hai.
+"scripts": {
+  "start": "nodemon index.js"
+}
+----------------------------
+Note :- EJS files ko views folder me .ejs extension ke saath rakho

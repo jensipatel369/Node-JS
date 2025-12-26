@@ -151,6 +151,21 @@ What is a Template engine?
 A template engine in Node.js enables you to use static  template files and inject dynamic data at runtime to generate HTML markup sent to the client's browser.
 ex.. EJS, Pug, Handler.js, Nunjucks...
 ----------------------------
+What is a Middleware?
+
 ----------------------------
+What is a Database?
+A database is an organized, electronic collection of structured data, designed for efficient storage, retrieval, management, and updating by multiple users or applications, typically controlled by a Database Management System (DBMS). 
+
+Two type of database :-
+1. Relational Database (SQL:-Structured Query Language) 
+ ex...MySQL, PostgreSQL
+2. No-Relational Database (NoSQL)
+
+Other database :- 
+1. Hierarchical
+2. Cloud
+3. Object-Oriented database (OOD)
 ----------------------------
+
 ----------------------------
