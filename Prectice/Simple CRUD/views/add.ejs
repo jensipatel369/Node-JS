@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add</title>
+</head>
+<body>
+    <h1>CRUD using Express JS...!</h1>
+    <form action="/addData" method="post">
+        <input type="text" name="name" placeholder="Enter your name">
+        <input type="text" name="age" placeholder="Enter your age">
+        <input type="text" name="city" placeholder="Enter your city">
+        <button type="submit">Add</button>
+    </form>
+    <%data.map((e,i)=>{%>
+        <ul>
+            <li><%=e.id%></li>
+            <li><%=e.name%></li>
+            <li><%=e.age%></li>
+            <li><%=e.city%></li>
+            <li><a href="/editData?id=<%=e.id%>"><button>Edit</button></a></li>
+            <li><a href="/deleteData/<%=e.id%>"><button>Delete</button></a></li>
+        </ul>
+    <%})%>
+</body>
+</html>

@@ -90,3 +90,40 @@ Examples :-
 }
 ----------------------------
 Note :- EJS files ko views folder me .ejs extension ke saath rakho
+----------------------------
+14. What is a Template engine?
+-> Template engine Node.js me static HTML files me dynamic data inject karne ke kaam aata hai, jisse browser ko final HTML milta hai.
+Example: EJS, Pug, Handlebars, Nunjucks
+----------------------------
+15. What is a Middleware?
+-> Middleware Node.js ka ek function hota hai jo request aur response ke beech kaam karta hai.
+Isme req, res aur next() hota hai, jisse control next middleware ko pass hota hai.
+----------------------------
+16. What is a Database?
+-> Database ek organized electronic data collection hota hai jisme data ko store, manage aur retrieve kiya jata hai.
+
+Database ke Two(02) types:-
+1.Relational Database (SQL)
+  Example: MySQL, PostgreSQL, Oracle
+2.Non-Relational Database (NoSQL)
+  Example: MongoDB
+
+Other Databases:-
+1.Hierarchical
+2.Cloud
+3.Object-Oriented Database (OOD)
+----------------------------
+17. What is Schema?
+-> Schema ek blueprint hota hai jo database me data ka structure define karta hai.
+----------------------------
+18. Write Mongoose Uses :-
+-> 1.Database Connection Management – Node.js ko MongoDB se easily connect karta hai.
+2.Schema Definition – Data ka structure define karta hai.
+3.CRUD Operations – Create, Read, Update, Delete easily karta hai.
+4.Data Validation – Galat data save hone se rokta hai.
+5.Middleware (Hooks) – Save ya update se pehle/baad code run karne deta hai.
+----------------------------
+----------------------------
+----------------------------
+----------------------------
+

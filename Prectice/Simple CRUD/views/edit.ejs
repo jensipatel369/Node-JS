@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD in Express</title>
+</head>
+<body>
+    <h1>Edit in Express..!</h1>
+    <form action="/updateData" method="post">
+        <input type="text" value="<%=singleData.id%>" name="id" hidden>
+        <input type="text" value="<%=singleData.name%>" name="name" placeholder="Enter your name">
+        <input type="text" value="<%=singleData.age%>" name="age" placeholder="Enter your age">
+        <input type="text" value="<%=singleData.city%>" name="city" placeholder="Enter your city">
+        <button type="submit">Update Data</button>
+    </form>
+</body>
+</html>

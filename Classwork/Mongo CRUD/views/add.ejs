@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mongo CRUD</title>
+</head>
+<body>
+    <h1>Add New Record</h1>  
+    <form action="/addData" method="post">
+        <input type="text" name="name" placeholder="Enter your name">
+        <input type="number" name="age" placeholder="Enter your age">
+        <input type="submit">
+    </form>
+
+    <table border="1" style="margin-top:20px; width:38%; text-align:center;">
+        <tr style="background-color:lightgrey;">
+            <th style="padding: 7px 0;">S.No</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        <%data.map((e,i)=>{%>
+            <tr>
+                <td style="padding: 7px 0;"><%=i+1%></td>
+                <td><%=e.id%></td>
+                <td><%=e.name%></td>
+                <td><%=e.age%></td>
+                <td><a href=""><button style="cursor: pointer;">Edit</button></a></td>
+                <td><a href=""><button style="cursor: pointer;">Delete</button></a></td>
+            </tr>
+            <%})%>
+    </table>
+</body>
+</html>
