@@ -49,6 +49,8 @@ Launch :- 2009
    2.Local Modules
    3.Third-Party Modules
 
+
+
 1.Core Module :- Core modules Node.js me built-in hote hain, inhe install karne ki zarurat nahi hoti. Inhe require() se use karte hain.
 
 Examples :-
@@ -99,6 +101,8 @@ Example: EJS, Pug, Handlebars, Nunjucks
 -> Middleware Node.js ka ek function hota hai jo request aur response ke beech kaam karta hai.
 Isme req, res aur next() hota hai, jisse control next middleware ko pass hota hai.
 ----------------------------
+
+
 16. What is a Database?
 -> Database ek organized electronic data collection hota hai jisme data ko store, manage aur retrieve kiya jata hai.
 
