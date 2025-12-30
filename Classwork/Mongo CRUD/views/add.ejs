@@ -27,8 +27,8 @@
                 <td><%=e.id%></td>
                 <td><%=e.name%></td>
                 <td><%=e.age%></td>
-                <td><a href=""><button style="cursor: pointer;">Edit</button></a></td>
-                <td><a href=""><button style="cursor: pointer;">Delete</button></a></td>
+                <td><a href="/editData?id=<%=e.id%>"><button style="cursor: pointer;">Edit</button></a></td>
+                <td><a href="/deleteData?id=<%=e.id%>"><button style="cursor: pointer;">Delete</button></a></td>
             </tr>
             <%})%>
     </table>
