@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOK STORE DETAILS</title>
+</head>
+<body>
+    <h1 style="text-align:center; color:#333; margin-bottom:20px;">📚 EDIT BOOK STORE DETAILS</h1>
+    <form action="/updateData" method="post" style=" width:55%; margin:auto; padding:20px; background-color:#ffffff; border-radius:8px; display:flex; justify-content:center; flex-wrap:wrap; gap:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); ">
+        <input type="text" name="id" hidden required value="<%=singleData.id%>"style="width:22%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="text" name="name" placeholder="Book Name" required value="<%=singleData.name%>"style="width:22%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="text" name="author" placeholder="Author Name" required value="<%=singleData.author%>"style="width:22%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="text" name="publisher" placeholder="Publisher Name" required value="<%=singleData.publisher%>"style="width:22%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="number" name="Year" placeholder="Publication Year" required value="<%=singleData.Year%>"style="width:22%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="text" name="language" placeholder="Language" required value="<%=singleData.language%>"style="width:30%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="number" name="stock" placeholder="Stock Quantity" required value="<%=singleData.stock%>"style="width:30%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="number" name="price" placeholder="Book Price" required value="<%=singleData.price%>" style="width:30%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="submit" value="UPDATE DETAILS" style=" width:140px; padding:8px; background-color:#007bff; color:white; border:none; border-radius:5px; font-size:14px; cursor:pointer; margin-top:5px; ">
+    </form>  
+</body>
+</html>

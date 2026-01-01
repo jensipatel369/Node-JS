@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOK STORE DETAILS</title>
+</head>
+<body style="margin:0; padding:20px; font-family:Arial, sans-serif; background-color:#f2f4f7;">
+    <h1 style="text-align:center; color:#333; margin-bottom:20px;">📚 ADD BOOK STORE DETAILS</h1>
+    <form action="/addData" method="post" style=" width:55%; margin:auto; padding:20px; background-color:#ffffff; border-radius:8px; display:flex; justify-content:center; flex-wrap:wrap; gap:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); ">
+        <input type="text" name="name" placeholder="Book Name" required style="width:22%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="text" name="author" placeholder="Author Name" required style="width:22%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="text" name="publisher" placeholder="Publisher Name" required style="width:22%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="number" name="Year" placeholder="Publication Year" required style="width:22%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="text" name="language" placeholder="Language" required style="width:30%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="number" name="stock" placeholder="Stock Quantity" required style="width:30%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="number" name="price" placeholder="Book Price" required style="width:30%; padding:8px; border:1px solid #999; border-radius:5px;">
+        <input type="submit" value="ADD DETAILS" style=" width:140px; padding:8px; background-color:#007bff; color:white; border:none; border-radius:5px; font-size:14px; cursor:pointer; margin-top:5px; ">
+    </form>
+
+    <!-- Output Table -->
+    <table style=" width:90%; margin:30px auto; border-collapse:collapse; background-color:white; box-shadow:0 4px 10px rgba(0,0,0,0.1); ">
+        <thead style="background-color:#007bff; color:white;">
+            <tr>
+                <th style="padding:15px; border: 1px solid black;">S.No</th>
+                <th style="padding:15px; border: 1px solid black;">Book Name</th>
+                <th style="padding:15px; border: 1px solid black;">Author</th>
+                <th style="padding:15px; border: 1px solid black;">Publisher</th>
+                <th style="padding:15px; border: 1px solid black;">Year</th>
+                <th style="padding:15px; border: 1px solid black;">Language</th>
+                <th style="padding:15px; border: 1px solid black;">Stock</th>
+                <th style="padding:15px; border: 1px solid black;">Price</th>
+                <th colspan="2" style="padding:10px; border: 1px solid black;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.map((e,i)=>{ %>
+            <tr style="text-align:center; border-bottom:1px solid #ddd;">
+                <td style="padding:5px; border:1px solid black;"><%= i+1 %></td>
+                <td style="padding:5px; border:1px solid black;"><%= e.name %></td>
+                <td style="padding:5px; border:1px solid black;"><%= e.author %></td>
+                <td style="padding:5px; border:1px solid black;"><%= e.publisher %></td>
+                <td style="padding:5px; border:1px solid black;"><%= e.Year %></td>
+                <td style="padding:5px; border:1px solid black;"><%= e.language %></td>
+                <td style="padding:5px; border:1px solid black;"><%= e.stock %></td>
+                <td style="padding:5px; border:1px solid black;">₹ <%= e.price %></td>
+                <td style="padding:5px; border:1px solid black;">
+                    <a href="/editData?id=<%= e.id %>">
+                        <button style="padding:5px 10px; background:#28a745; color:white; border:none; border-radius:4px; cursor:pointer;">Edit</button>
+                    </a>
+                </td>
+                <td style="padding:5px; border:1px solid black;">
+                    <a href="/deleteData?id=<%= e.id %>">
+                        <button style="padding:5px 10px; background:#dc3545; color:white; border:none; border-radius:4px; cursor:pointer;">
+                            Delete
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
