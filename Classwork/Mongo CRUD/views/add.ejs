@@ -7,9 +7,10 @@
 </head>
 <body>
     <h1>Add New Record</h1>  
-    <form action="/addData" method="post">
+    <form action="/addData" method="post" enctype="multipart/form-data">
         <input type="text" name="name" placeholder="Enter your name">
         <input type="number" name="age" placeholder="Enter your age">
+        <input type="file" name="image">
         <input type="submit">
     </form>
 
@@ -19,6 +20,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Age</th>
+            <th>Image</th>
             <th colspan="2">Actions</th>
         </tr>
         <%data.map((e,i)=>{%>
@@ -27,6 +29,7 @@
                 <td><%=e.id%></td>
                 <td><%=e.name%></td>
                 <td><%=e.age%></td>
+                <td><img src="<%=e.image%>" alt="Image" width="80px" height="80px"></td>
                 <td><a href="/editData?id=<%=e.id%>"><button style="cursor: pointer;">Edit</button></a></td>
                 <td><a href="/deleteData?id=<%=e.id%>"><button style="cursor: pointer;">Delete</button></a></td>
             </tr>

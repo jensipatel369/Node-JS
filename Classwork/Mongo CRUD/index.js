@@ -1,19 +1,23 @@
 const express = require("express");
 const port = 2312
+const path = require("path");
 
 const app = express();
 
 const db = require("./config/db");
 const schema = require("./model/firstSchema");
+const multer = require("./middlewares/multer");
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
+app.use("/uploads",express.static(path.join(__dirname,"uploads")))
 
 app.get("/", async (req, res) => {
     let data = await schema.find({});
     res.render("add", { data })
 })
-app.post("/addData", async (req, res) => {
+app.post("/addData",multer,async (req, res) => {
+    req.body.image = req.file.path;
     await schema.create(req.body).then(() => {
         res.redirect("/");
     })

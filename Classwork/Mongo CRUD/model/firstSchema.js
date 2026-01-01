@@ -8,6 +8,10 @@ const Schema = new mongoose.Schema({
     age: {
         type: Number,
         required: true
+    },
+    image: {
+        type: String,
+        required: true
     }
 })
 
