@@ -30,6 +30,6 @@ app.post("/updateData",async(req,res)=>{
     res.redirect("/");
 })
 
-app.listen(port,(arr)=>{
-    arr ? console.log(err) : console.log(`Server is running on port ${port}`);
+app.listen(port,(err)=>{
+    err ? console.log(err) : console.log(`Server is running on port ${port}`);
 })
