@@ -1,0 +1,39 @@
+import React, { useEffect } from 'react'
+import axios from 'axios';
+import { useState } from 'react';
+
+export default function App() {
+
+  const [formdata,setFormdata] = useState({})
+
+  const handleChange =(e)=>{
+    setFormdata({
+      ...formdata,
+      [e.target.name] : e.target.value
+    })
+  }
+
+  const handleSubmit = async (e)=>{
+    e.preventDefault()
+    await axios.post("http://localhost:2312/addData",formdata).then((res)=>{
+      alert(res.data.msg)
+      setFormdata({
+        name : "",
+        age : "",
+        city : ""
+      })
+    })
+  }
+
+  return (
+    <div>
+      <h1>CRUD with MERN</h1>
+      <form onClick={handleSubmit}>
+        <input type="text" name='name' value={formdata.name} placeholder='Enter your name' onChange={handleChange} />
+        <input type="number" name='age' value={formdata.age} placeholder='Enter your age' onChange={handleChange} />
+        <input type="text" name='city' value={formdata.city} placeholder='Enter your city' onChange={handleChange} />
+        <button type='submit'>Add Data</button>
+      </form>
+    </div>
+  )
+}

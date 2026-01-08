@@ -44,7 +44,7 @@ app.post("/updateData", multer, async(req,res)=>{
     req.body.image = img;
 
     await schema.findByIdAndUpdate(req.body.id,req.body).then(()=>{
-        res.redirect("/");
+        res.redirect("/"); 
     })
 })
 

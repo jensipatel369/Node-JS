@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVC</title>
+</head>
+<body>
+    <h1>Add User</h1>
+    <form action="/addData" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" required><br><br>
+        <input type="text" name="name" placeholder="Enter Name" required><br><br>
+        <input type="number" name="age" placeholder="Enter Age" required><br><br>
+        <input type="text" name="city" placeholder="Enter City" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <table style="border: 1px solid black;">
+        <tr>
+            <th style="border: 1px solid black;">S. No.</th>
+            <th style="border: 1px solid black;">Image</th>
+            <th style="border: 1px solid black;">Name</th>
+            <th style="border: 1px solid black;">Age</th>
+            <th style="border: 1px solid black;">City</th>
+            <th colspan="2" style="border: 1px solid black;">Actions</th>
+        </tr>
+        <%data.map((e,i)=>{%>
+        <tr>
+            <td style="border: 1px solid black;"><%=i+1 %></td>
+            <td><img src="<%=e.image %>" alt="User Image" width="100px" height="100px"></td>
+            <td style="border: 1px solid black;"><%=e.name %></td>
+            <td style="border: 1px solid black;"><%=e.age %></td>
+            <td style="border: 1px solid black;"><%=e.city %></td>
+            <td><a href="/editData?id=<%=e.id%>"><button>Edit</button></a></td>
+            <td><a href="/deleteData?id=<%=e.id%>"><button>Delete</button></a></td>
+        </tr>
+        <%})%>
+    </table>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVC architecture</title>
+</head>
+<body>
+    <h1>Edit User</h1>
+    <form action="/updateData" method="post" enctype="multipart/form-data">
+        <input name="id" value="<%=singleData.id%>" hidden> 
+        <input type="file" name="image">
+        <img src="<%=singleData.image%>" alt="Image" width="100" height="100"><br><br>
+        <input type="text" name="name" value="<%=singleData.name%>"><br><br>
+        <input type="number" name="age" value="<%=singleData.age%>"><br><br>
+        <input type="text" name="city" value="<%=singleData.city%>"><br><br>
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>
