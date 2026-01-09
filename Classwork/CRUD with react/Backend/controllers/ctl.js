@@ -5,10 +5,18 @@ module.exports.addData = async(req,res)=>{
         res.json({"msg" : "Data added successfully","data":data})
     })
 }
-// module.exports.getData = async (req, res) => {
-//     const data = await Schema.find();
-//     res.json(data);
-// };
-// module.exports.deleteData = async(req.res)=>{
-    
-// }
+module.exports.getData = async (req, res) => {
+    await Schema.find({}).then((data) => {
+        res.json({"data" : data});
+    });
+};
+module.exports.deleteData = async(req,res)=>{
+    await Schema.findByIdAndDelete(req.query.id).then((data)=>{
+        res.json({"msg":"Data deleted sccessfully...!","data":data})
+    })
+}
+module.exports.updateData = async(req,res)=>{
+    await Schema.findByIdAndUpdate(req.body.id,req.body).then(()=>{
+        res.json({"msg":"Data updated sccessfully...!","data":data})
+    })
+}

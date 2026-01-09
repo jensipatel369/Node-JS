@@ -4,71 +4,91 @@ import { useState } from 'react';
 
 export default function App() {
 
-  const [formdata,setFormdata] = useState({})
+  const [formdata, setFormdata] = useState({})
+  const [record, setRecord] = useState([])
+  const [editIndex, setEditIndex] = useState(null)
 
-  const handleChange =(e)=>{
+  useEffect(() => {
+    fetchData();
+  }, [record]);
+
+  const fetchData = async () => {
+    await axios.get("http://localhost:2312/getData").then((res) => {
+      setRecord(res.data.data);
+    })
+  };
+
+  const handleChange = (e) => {
     setFormdata({
       ...formdata,
-      [e.target.name] : e.target.value
+      [e.target.name]: e.target.value
     })
   }
 
-  const handleSubmit = async (e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    await axios.post("http://localhost:2312/addData",formdata).then((res)=>{
-      alert(res.data.msg)
-      setFormdata({
-        name : "",
-        age : "",
-        city : ""
+    if (editIndex == null) {
+      await axios.post("http://localhost:2312/addData", formdata).then((res) => {
+        alert(res.data.msg)
       })
+    } else {
+      await axios.put(`http://localhost:2312/updateData?id=${editIndex}`, formdata).then((res) => {
+        alert(res.data.msg)
+      })
+      setFormdata({
+        name: "",
+        age: "",
+        city: ""
+      })
+    }
+  }
+
+  const handleDelete = async (id) => {
+    await axios.delete(`http://localhost:2312/deleteData?id=${id}`).then((res) => {
+      alert(res.data.msg);
+      let newData = record.filter((item) =>
+        item.id != id)
+      setRecord(newData)
     })
   }
 
-  // const fetchData = async () => {
-  //   const res = await axios.get("http://localhost:2312/getData");
-  //   setData(res.data);
-  // };
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+return (
+  <div>
+    <h1>CRUD with MERN</h1>
+    <form onClick={handleSubmit}>
+      <input type="text" name='name' value={formdata.name} placeholder='Enter your name' onChange={handleChange} />
+      <input type="number" name='age' value={formdata.age} placeholder='Enter your age' onChange={handleChange} />
+      <input type="text" name='city' value={formdata.city} placeholder='Enter your city' onChange={handleChange} />
+      <button type='submit'>Add Data</button>
+    </form>
 
-  return (
-    <div>
-      <h1>CRUD with MERN</h1>
-      <form onClick={handleSubmit}>
-        <input type="text" name='name' value={formdata.name} placeholder='Enter your name' onChange={handleChange} />
-        <input type="number" name='age' value={formdata.age} placeholder='Enter your age' onChange={handleChange} />
-        <input type="text" name='city' value={formdata.city} placeholder='Enter your city' onChange={handleChange} />
-        <button type='submit'>Add Data</button>
-      </form>
-
-      <table border="1">
-        <thead>
-          <tr>
-            <th>S. No.</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>City</th>
-            <th colSpan={2}>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            // data.map((e,i)=>{
-            //   <tr key={i}>
-            //     <td>{i+1}</td>
-            //     <td>{e.name}</td>
-            //     <td>{e.age}</td>
-            //     <td>{e.city}</td>
-            //   </tr>
-            // })
-          }
-        </tbody>
-
-      </table>
-    </div>
-  )
-}
-
+    <table border={1}>
+      <thead>
+        <tr>
+          <th>S. No.</th>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>City</th>
+          <th colSpan={2}>Actionns</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          record.map((e, i) => {
+            return <tr key={i}>
+              <td>{i + 1}</td>
+              <td>{e._id}</td>
+              <td>{e.name}</td>
+              <td>{e.age}</td>
+              <td>{e.city}</td>
+              <td><button onClick={handleSubmit(e.id)}>Edit</button></td>
+              <td><button onClick={handleDelete(e.id)}>Delete</button></td>
+            </tr>
+          })
+        }
+      </tbody>
+    </table>
+  </div>
+)}
