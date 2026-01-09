@@ -5,6 +5,10 @@ module.exports.addData = async(req,res)=>{
         res.json({"msg" : "Data added successfully","data":data})
     })
 }
-module.exports.deleteData = async(req.res)=>{
+// module.exports.getData = async (req, res) => {
+//     const data = await Schema.find();
+//     res.json(data);
+// };
+// module.exports.deleteData = async(req.res)=>{
     
-}
+// }

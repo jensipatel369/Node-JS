@@ -25,6 +25,15 @@ export default function App() {
     })
   }
 
+  // const fetchData = async () => {
+  //   const res = await axios.get("http://localhost:2312/getData");
+  //   setData(res.data);
+  // };
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
   return (
     <div>
       <h1>CRUD with MERN</h1>
@@ -34,6 +43,32 @@ export default function App() {
         <input type="text" name='city' value={formdata.city} placeholder='Enter your city' onChange={handleChange} />
         <button type='submit'>Add Data</button>
       </form>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>S. No.</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+            <th colSpan={2}>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            // data.map((e,i)=>{
+            //   <tr key={i}>
+            //     <td>{i+1}</td>
+            //     <td>{e.name}</td>
+            //     <td>{e.age}</td>
+            //     <td>{e.city}</td>
+            //   </tr>
+            // })
+          }
+        </tbody>
+
+      </table>
     </div>
   )
 }
+

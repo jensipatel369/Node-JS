@@ -1,0 +1,11 @@
+div{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+table{
+    width: 80%;
+    border-collapse: collapse;
+    text-align: center;
+    margin: 20px auto 0;
+}
