@@ -10,7 +10,7 @@ export default function App() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [record]);
 
   const handleChange = (e) => {
     setFormdata({
@@ -27,6 +27,10 @@ export default function App() {
       })
     } else {
       await axios.put(`http://localhost:2312/updateData?id=${editIndex}`, formdata).then((res) => {
+        // singleData = record.find((item) => item._id == editIndex);
+        // singleData.name = formdata.name;
+        // singleData.age = formdata.age;
+        // singleData.city = formdata.city;
         alert(res.data.msg)
       })
     }
@@ -40,14 +44,14 @@ export default function App() {
 
   const handleDelete = async (id) => {
     await axios.delete(`http://localhost:2312/deleteData?id=${id}`).then((res) => {
-      let newData = record.filter((item) => item._id !== id)
+      let newData = record.filter((item) => item.id != id)
       setRecord(newData)
       alert(res.data.msg);
     })
   }
 
   const handleEdit = (id) => {
-    let singleData = record.find((item) => item._id === id);
+    let singleData = record.find((item) => item._id == id);
     setFormdata({
       name: singleData.name,
       age: singleData.age,
