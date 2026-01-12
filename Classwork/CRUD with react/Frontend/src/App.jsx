@@ -10,13 +10,7 @@ export default function App() {
 
   useEffect(() => {
     fetchData();
-  }, [record]);
-
-  const fetchData = async () => {
-    await axios.get("http://localhost:2312/getData").then((res) => {
-      setRecord(res.data.data);
-    })
-  };
+  }, []);
 
   const handleChange = (e) => {
     setFormdata({
@@ -35,60 +29,76 @@ export default function App() {
       await axios.put(`http://localhost:2312/updateData?id=${editIndex}`, formdata).then((res) => {
         alert(res.data.msg)
       })
-      setFormdata({
-        name: "",
-        age: "",
-        city: ""
-      })
     }
+    setEditIndex(null);
+    setFormdata({
+      name: "",
+      age: "",
+      city: ""
+    })
   }
 
   const handleDelete = async (id) => {
     await axios.delete(`http://localhost:2312/deleteData?id=${id}`).then((res) => {
-      alert(res.data.msg);
-      let newData = record.filter((item) =>
-        item.id != id)
+      let newData = record.filter((item) => item._id !== id)
       setRecord(newData)
+      alert(res.data.msg);
     })
   }
 
+  const handleEdit = (id) => {
+    let singleData = record.find((item) => item._id === id);
+    setFormdata({
+      name: singleData.name,
+      age: singleData.age,
+      city: singleData.city
+    });
+    setEditIndex(id);
+  }
 
-return (
-  <div>
-    <h1>CRUD with MERN</h1>
-    <form onClick={handleSubmit}>
-      <input type="text" name='name' value={formdata.name} placeholder='Enter your name' onChange={handleChange} />
-      <input type="number" name='age' value={formdata.age} placeholder='Enter your age' onChange={handleChange} />
-      <input type="text" name='city' value={formdata.city} placeholder='Enter your city' onChange={handleChange} />
-      <button type='submit'>Add Data</button>
-    </form>
+  const fetchData = async () => {
+    await axios.get("http://localhost:2312/getData").then((res) => {
+      setRecord(res.data.data);
+    })
+  };
 
-    <table border={1}>
-      <thead>
-        <tr>
-          <th>S. No.</th>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Age</th>
-          <th>City</th>
-          <th colSpan={2}>Actionns</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          record.map((e, i) => {
-            return <tr key={i}>
-              <td>{i + 1}</td>
-              <td>{e._id}</td>
-              <td>{e.name}</td>
-              <td>{e.age}</td>
-              <td>{e.city}</td>
-              <td><button onClick={handleSubmit(e.id)}>Edit</button></td>
-              <td><button onClick={handleDelete(e.id)}>Delete</button></td>
-            </tr>
-          })
-        }
-      </tbody>
-    </table>
-  </div>
-)}
+  return (
+    <div>
+      <h1>CRUD with MERN</h1>
+      <form onClick={handleSubmit}>
+        <input type="text" name='name' value={formdata.name} placeholder='Enter your name' onChange={handleChange} />
+        <input type="number" name='age' value={formdata.age} placeholder='Enter your age' onChange={handleChange} />
+        <input type="text" name='city' value={formdata.city} placeholder='Enter your city' onChange={handleChange} />
+        <button type='submit'>{editIndex == null ? "Add Data" : "Update Data"}</button>
+      </form>
+
+      <table border={1}>
+        <thead>
+          <tr>
+            <th>S. No.</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+            <th colSpan={2}>Actionns</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            record.map((e, i) => {
+              return <tr key={i}>
+                <td>{i + 1}</td>
+                <td>{e._id}</td>
+                <td>{e.name}</td>
+                <td>{e.age}</td>
+                <td>{e.city}</td>
+                <td><button onClick={() => handleEdit(e._id)}>Edit</button></td>
+                <td><button onClick={() => handleDelete(e._id)}>Delete</button></td>
+              </tr>
+            })
+          }
+        </tbody>
+      </table>
+    </div>
+  )
+}
