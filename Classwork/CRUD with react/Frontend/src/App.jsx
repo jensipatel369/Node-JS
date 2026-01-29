@@ -67,9 +67,9 @@ export default function App() {
     <div className='flex flex-col items-center'>
       <h1 className='text-2xl font-semibold py-5'>CRUD with React</h1>
       <form onSubmit={handleSubmit} className='pb-5 flex flex-col gap-3 w-75'>
-        <input type="text" name="name" value={formdata.name} placeholder="Enter Your Full Name :" onChange={handleChange} className='border-1' />
-        <input type="number" name="age" value={formdata.age} placeholder="Enter Your Age :" onChange={handleChange} className='border-1' />
-        <input type="text" name="city" value={formdata.city} placeholder="Enter Your City :" onChange={handleChange} className='border-1' />
+        <input type="text" name="name" value={formdata.name} placeholder="Enter Your Full Name :" onChange={handleChange} className='border-1 pl-2' />
+        <input type="number" name="age" value={formdata.age} placeholder="Enter Your Age :" onChange={handleChange} className='border-1 pl-2' />
+        <input type="text" name="city" value={formdata.city} placeholder="Enter Your City :" onChange={handleChange} className='border-1 pl-2' />
         <button type="submit" className='border-1'>{editIndex == null ? "Add Record" : "Update Record"}</button>
       </form>
 
@@ -82,22 +82,23 @@ export default function App() {
             <th className='border-1'>Age</th>
             <th className='border-1'>City</th>
             <th className='border-1' colSpan={2}>Actions</th>
+            <th>Mod</th>
           </tr>
         </thead>
         <tbody>
           {
             record.map((e, i) => (
               <tr key={i}>
-                <td className='border-1 p-5'>{i + 1}</td>
-                <td className='border-1 p-5'>{e._id}</td>
-                <td className='border-1 p-5'>{e.name}</td>
-                <td className='border-1 p-5'>{e.age}</td>
-                <td className='border-1 p-5'>{e.city}</td>
-                <td className='border-1 p-5'>
-                  <button onClick={() => handleEdit(e._id)}>Edit</button>
+                <td className='border-1 p-3'>{i + 1}</td>
+                <td className='border-1 p-3'>{e._id}</td>
+                <td className='border-1 p-3'>{e.name}</td>
+                <td className='border-1 p-3'>{e.age}</td>
+                <td className='border-1 p-3'>{e.city}</td>
+                <td className='border-1 p-3'>
+                  <button onClick={() => handleEdit(e._id)} className='bg-yellow-400 px-3 rounded-sm'>Edit</button>
                 </td>
                 <td className='border-1 p-5'>
-                  <button onClick={() => handleDelete(e._id)}>Delete</button>
+                  <button onClick={() => handleDelete(e._id)} className='bg-red-400 px-3 rounded-sm'>Delete</button>
                 </td>
               </tr>
             ))
