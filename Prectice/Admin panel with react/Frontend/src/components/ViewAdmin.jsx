@@ -2,10 +2,16 @@ import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import Aside from './Aside'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export default function ViewAdmin() {
 
     const [record, setRecord] = useState([])
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        fetchData();
+    }, [])
 
     const handleDelete = async (id) => {
         await axios.delete(`http://localhost:2312/deleteData?id=${id}`).then((res) => {
@@ -18,6 +24,12 @@ export default function ViewAdmin() {
     const handleEdit = (id) => {
         let singleData = record.find((item) => item._id == id);
         navigate("/editAdmin", { state: singleData })
+    }
+
+    const fetchData = async () => {
+        await axios.get("http://localhost:2312/getData").then((res) => {
+            setRecord(res.data.data)
+        })
     }
 
     return (

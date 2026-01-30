@@ -4,6 +4,25 @@ import axios from 'axios'
 
 export default function Login() {
 
+  const navigate = useNavigate()
+  const [formdata, setFormdata] = useState({})
+
+  const handleChange = (e) => {
+    setFormdata({
+      ...formdata,
+      [e.target.name]: e.target.value
+    })
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let res = await axios.post("http://localhost:2312/login", formdata);
+    if (res.data.auth) {
+      navigate("/dashboard");
+    } else {
+      alert(res.data.msg);
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-8">

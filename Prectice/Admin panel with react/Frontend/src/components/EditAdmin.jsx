@@ -7,7 +7,14 @@ import axios from 'axios'
 export default function EditAdmin() {
 
     const [formdata, setFormdata] = useState({})
+    const locationObj = useLocation()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if (locationObj.state) {
+            setFormdata(locationObj.state)
+        }
+    }, [])
 
     const handleChange = (e) => {
         setFormdata({
