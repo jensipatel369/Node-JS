@@ -1,20 +1,26 @@
 import React from 'react'
 import axios from 'axios';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Profile() {
 
     const navigate = useNavigate();
     const [profile, setProfile] = useState({})
-    
-    useEffect(()=>{
-        let res = axios.get("http://localhost:2312/profile");
-        if(res.data.auth === false){
-            navigate("/login");
-        }
-    },[])
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        fetchProfile();
+    }, [])
+
+    const fetchProfile = async () => {
+        let res = await axios.get("http://localhost:2312/profile", {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        setProfile(res.data);
+    }
 
 
     return (
@@ -36,14 +42,14 @@ export default function Profile() {
                         <div className="-mt-16 flex items-end justify-between">
                             <div className="flex items-center gap-4">
                                 <div className="w-32 h-32 rounded-full bg-white flex items-center justify-center text-4xl font-bold text-blue-600 border-4">
-                                    {profile.data?.name.charAt(0).toUpperCase()}
+                                    {profile.name?.charAt(0).toUpperCase()}
                                 </div>
                                 <div>
                                     <h2 className="text-2xl font-semibold text-white">
-                                        {profile.data?.name}
+                                        {profile.name}
                                     </h2>
                                     <p className="text-gray-500">
-                                        {profile.data?.email}
+                                        {profile.email}
                                     </p>
                                 </div>
                             </div>
@@ -78,15 +84,15 @@ export default function Profile() {
                                 <div className="space-y-3 text-sm">
                                     <div className="flex justify-between">
                                         <span className="text-gray-500">Full Name</span>
-                                        <span className="text-gray-800">John Doe</span>
+                                        <span className="text-gray-800">{profile.name}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-gray-500">Email</span>
-                                        <span className="text-gray-800">john@example.com</span>
+                                        <span className="text-gray-800">{profile.email}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-gray-500">Phone</span>
-                                        <span className="text-gray-800">+1 234 567 890</span>
+                                        <span className="text-gray-800">+91 25315 85965</span>
                                     </div>
                                 </div>
                             </div>

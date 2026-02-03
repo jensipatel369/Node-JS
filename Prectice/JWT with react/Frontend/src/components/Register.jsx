@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 export default function Register() {
     const [formdata, setFormdata] = useState({})
     const navigate = useNavigate()
+    const token = localStorage.getItem("token")
 
     const handleChange = (e) => {
         setFormdata({
@@ -15,7 +16,11 @@ export default function Register() {
 
     const handleRegister = async (e) => {
         e.preventDefault()
-        await axios.post("http://localhost:2312/register", formdata).then((res) => {
+        await axios.post("http://localhost:2312/register", formdata, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then((res) => {
             alert(res.data.msg)
             navigate("/login")
         })

@@ -7,6 +7,7 @@ export default function Login() {
 
   const navigate = useNavigate();
   const [formdata, setFormdata] = useState({})
+  const token = localStorage.getItem("token")
 
   const handleChange = (e) => {
     setFormdata({
@@ -15,58 +16,63 @@ export default function Login() {
     })
   }
 
-  const handleLogin = async (e)=>{
+  const handleLogin = async (e) => {
     e.preventDefault();
-    let res = await axios.post("http://localhost:2312/login", formdata);
-    if(res.data.auth){
-      navigate("/dashboard");
-    }else{
+    let res = await axios.post("http://localhost:2312/login", formdata, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    if (res.data.auth) {
+      navigate("/login")
+    } else {
       alert(res.data.msg);
+      navigate("/dashboard");
     }
   }
 
   return (
     <div className='flex justify-center items-center h-screen bg-gray-200'>
       <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-lg">
-      <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-        Login
-      </h2>
-
-      <form onSubmit={handleLogin}>
-        <div className="mb-4">
-          <label className="block text-gray-700 mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 mb-2">
-            Password
-          </label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-            onChange={handleChange}
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full cursor-pointer bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
-        >
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Login
-        </button>
-      </form>
-    </div>
+        </h2>
+
+        <form onSubmit={handleLogin}>
+          <div className="mb-4">
+            <label className="block text-gray-700 mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-6">
+            <label className="block text-gray-700 mb-2">
+              Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+              onChange={handleChange}
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full cursor-pointer bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+          >
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   )
 }
