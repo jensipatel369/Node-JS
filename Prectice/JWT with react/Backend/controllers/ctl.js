@@ -23,3 +23,7 @@ module.exports.login = async (req, res) => {
     }
 }
 
+module.exports.profile = async (req, res) => {
+    
+}
+

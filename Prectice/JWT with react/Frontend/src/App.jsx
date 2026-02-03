@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import Register from './components/Register'
+import Profile from './components/Profile'
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
         <Route path="/" Component={Register} />
         <Route path="/login" Component={Login} />
         <Route path="/dashboard" Component={Dashboard} />
+        <Route path="/profile" Component={Profile} />
       </Routes>
     </BrowserRouter>
   )
