@@ -12,6 +12,10 @@ const Schema = mongoose.Schema({
     password :{
         type: String,
         required: true
+    },
+    createdAt :{
+        type: String,
+        required: true
     }
 })
 

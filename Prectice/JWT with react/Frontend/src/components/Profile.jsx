@@ -42,14 +42,17 @@ export default function Profile() {
                         <div className="-mt-16 flex items-end justify-between">
                             <div className="flex items-center gap-4">
                                 <div className="w-32 h-32 rounded-full bg-white flex items-center justify-center text-4xl font-bold text-blue-600 border-4">
-                                    {profile.name?.charAt(0).toUpperCase()}
+                                    {/* {profile.name?.charAt(0).toUpperCase()} */}
+                                    J
                                 </div>
                                 <div>
                                     <h2 className="text-2xl font-semibold text-white">
-                                        {profile.name}
+                                        {/* {profile.name} */}
+                                        Name
                                     </h2>
                                     <p className="text-gray-500">
-                                        {profile.email}
+                                        {/* {profile.email} */}
+                                        Email
                                     </p>
                                 </div>
                             </div>
@@ -84,11 +87,17 @@ export default function Profile() {
                                 <div className="space-y-3 text-sm">
                                     <div className="flex justify-between">
                                         <span className="text-gray-500">Full Name</span>
-                                        <span className="text-gray-800">{profile.name}</span>
+                                        <span className="text-gray-800">
+                                            {/* {profile.name} */}
+                                            Name
+                                        </span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-gray-500">Email</span>
-                                        <span className="text-gray-800">{profile.email}</span>
+                                        <span className="text-gray-800">
+                                            {/* {profile.email} */}
+                                            Email
+                                        </span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-gray-500">Phone</span>

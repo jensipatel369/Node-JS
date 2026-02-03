@@ -24,10 +24,9 @@ export default function Login() {
       }
     });
     if (res.data.auth) {
-      navigate("/login")
+      navigate("/dashboard")
     } else {
       alert(res.data.msg);
-      navigate("/dashboard");
     }
   }
 
