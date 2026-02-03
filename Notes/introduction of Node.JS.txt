@@ -181,6 +181,12 @@ Write Mongoose Uses :-
 What is MVC?
 MVC (Model-View-Controller) is a software design pattern that separates an application into three interconnected parts: the Model (data & logic), the View (user interface), and the Controller (handles input & links Model/View).
 ----------------------------
+JWT :- JSON Web tokens
+
+JSON 3 part in divaded
+1. header
+2. payload
+3. security / signature
 
 ----------------------------
 ----------------------------
