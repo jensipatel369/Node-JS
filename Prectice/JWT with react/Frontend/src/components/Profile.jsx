@@ -1,27 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Profile() {
 
+    const [user,setUser] = useState({});
     const navigate = useNavigate();
-    const [profile, setProfile] = useState({})
     const token = localStorage.getItem("token");
 
     useEffect(() => {
-        fetchProfile();
-    }, [])
+        if(!token){
+            navigate("/login");
+        }else{
+            handleProfile();
+        }
+    },[])
 
-    const fetchProfile = async () => {
-        let res = await axios.get("http://localhost:2312/profile", {
+    const handleProfile = async () => {
+        await axios.get("http://localhost:2312/profile", {
             headers: {
-                'Authorization': `Bearer ${token}`
+                "Authorization" : `Bearer ${token}`
             }
-        });
-        setProfile(res.data);
+        }).then((res)=>{
+            setUser(res.data.user);
+        })
     }
-
 
     return (
         <div className="min-h-screen bg-gray-100">
@@ -42,17 +45,14 @@ export default function Profile() {
                         <div className="-mt-16 flex items-end justify-between">
                             <div className="flex items-center gap-4">
                                 <div className="w-32 h-32 rounded-full bg-white flex items-center justify-center text-4xl font-bold text-blue-600 border-4">
-                                    {/* {profile.name?.charAt(0).toUpperCase()} */}
-                                    J
+                                    {user.name ? user.name.charAt(0).toUpperCase() : ""}
                                 </div>
                                 <div>
                                     <h2 className="text-2xl font-semibold text-white">
-                                        {/* {profile.name} */}
-                                        Name
+                                       {user.name}
                                     </h2>
                                     <p className="text-gray-500">
-                                        {/* {profile.email} */}
-                                        Email
+                                        {user.email}
                                     </p>
                                 </div>
                             </div>
@@ -87,17 +87,11 @@ export default function Profile() {
                                 <div className="space-y-3 text-sm">
                                     <div className="flex justify-between">
                                         <span className="text-gray-500">Full Name</span>
-                                        <span className="text-gray-800">
-                                            {/* {profile.name} */}
-                                            Name
-                                        </span>
+                                        <span className="text-gray-800">{user.name}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-gray-500">Email</span>
-                                        <span className="text-gray-800">
-                                            {/* {profile.email} */}
-                                            Email
-                                        </span>
+                                        <span className="text-gray-800">{user.email}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-gray-500">Phone</span>

@@ -7,7 +7,7 @@ module.exports.register = async (req, res) => {
     let user = await Schema.findOne({ email : req.body.email });
 
     if(user){
-        return  res.json({msg: "User already registered"});
+        return res.json({msg: "User already registered"});
     }
 
     req.body.password = await bcrypt.hash(req.body.password, 10);
@@ -34,6 +34,8 @@ module.exports.login = async (req, res) => {
 }
 
 module.exports.profile = async (req, res) => {
-    res.json({user:req.user})
+    await Schema.findById(req.user._id).then((data)=>{
+        res.json({msg: "Profile data fetched", user: data});
+    })
 }
 

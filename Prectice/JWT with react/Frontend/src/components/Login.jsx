@@ -7,7 +7,6 @@ export default function Login() {
 
   const navigate = useNavigate();
   const [formdata, setFormdata] = useState({})
-  const token = localStorage.getItem("token")
 
   const handleChange = (e) => {
     setFormdata({
@@ -18,15 +17,13 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    let res = await axios.post("http://localhost:2312/login", formdata, {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
+    let res = await axios.post("http://localhost:2312/login", formdata)
     if (res.data.auth) {
+      alert(res.data.msg);
+      localStorage.setItem("token", res.data.token);  
       navigate("/dashboard")
     } else {
-      alert(res.data.msg);
+      navigate("/login")
     }
   }
 
