@@ -1,24 +1,25 @@
-const express = require('express');
+const express = require("express");
+const multer = require("../middelwares/multer");
+
 const route = express.Router();
-const ctl = require('../controller/ctl');
+const controller = require("../controller/control");
+const passport = require("../middelwares/localSt")
 
-const passport = require("../middleware/localst")
+route.get("/",controller.loginPage)
+route.post("/login",passport.authenticate("localSt",{failureRedirect:"/"}),controller.login)
 
-route.get('/', ctl.login);
-route.post('/login',passport.authenticate("localSt",{failureRedirect:"/"}),ctl.loginAdmin);
-route.get('/logout', ctl.logout);
 
-route.get('/dashboard',passport.checkAuth, ctl.dashboard);
+route.get("/dashboard",passport.checkAuth,controller.dashboard)
+route.get("/addAdmin", passport.checkAuth, controller.addAdmin);
+route.get("/viewAdmin", passport.checkAuth, controller.viewAdmin);
+route.post("/addAdmin", passport.checkAuth, controller.addAdminData);
+route.get("/logout",controller.logout)
 
-route.get('/addAdmin', passport.checkAuth, ctl.addAdmin);
-route.post('/addAdmin', passport.checkAuth, ctl.addAdminData);
+route.get("/changePass",passport.checkAuth,controller.changePass)
+route.post("/verifyPass", passport.checkAuth, controller.verifyPass);
 
-route.get('/viewAdmin', passport.checkAuth, ctl.viewAdmin);
+route.post("/forgetPass",controller.forgetPass);
+route.post("/verifyOtp",controller.verifyOtp)
 
-route.get('/deleteData', ctl.deleteData);
-
-route.get('/editData', ctl.editData);
-
-route.post('/updateData', ctl.updateData);
 
 module.exports = route;

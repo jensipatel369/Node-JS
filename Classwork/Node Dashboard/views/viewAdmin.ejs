@@ -40,14 +40,16 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-                <%-include("header")%>
+            <%-include("header")%>
+        
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-                <%-include("aside")%>
+            <%-include("aside")%>
+        
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -92,29 +94,27 @@
                             <table class="table">
                                   <thead>
                                     <tr>
-                                      <th>Id</th>
-                                      <th>Name</th>
-                                      <th>Age</th>
-                                      <th>Email</th>
-                                      <th>Password</th>
-                                      <th colspan="2">Actions</th>
+                                      <th scope="col">#</th>
+                                      <th scope="col">Name</th>
+                                      <th scope="col">Email</th>
+                                      <th scope="col">Password</th>
+                                      <th scope="col">City</th>
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <%data.map((e,i)=>{%>
-                                    <tr>
-                                      <td><%=e._id%></td>
-                                      <td><%=e.name%></td>
-                                      <td><%=e.age%></td>
-                                      <td><%=e.email%></td>
-                                      <td><%=e.password%></td>
-                                      <td><a href="/editData?id=<%=e._id%>">Edit</a></td>
-                                      <td><a href="/deleteData?id=<%=e._id%>">Delete</a></td>
-                                    </tr>
-                                    <%})%>
+                                   <%data.map((e,i)=>{%>
+                                        <tr>
+                                            <td><%=e.id%></td>
+                                            <td><%=e.name%></td>
+                                            <td><%=e.email%></td>
+                                            <td><%=e.password%></td>
+                                            <td><%=e.city%></td>
+                                        </tr>
+                                   <%})%>
                                   </tbody>
                             </table>
                         </div>
+                      
                     </div>
                 </div>
                 <!-- ============================================================== -->

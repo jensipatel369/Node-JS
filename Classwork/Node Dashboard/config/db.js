@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://127.0.0.1/AdminData")
+mongoose.connect("mongodb://localhost:27017/BackendAll");
 
 const db = mongoose.connection;
 
-db.once("open",(err)=>{
-    err ? console.log(err) : console.log("Database connected successfully");
-})
+db.once("open", (err) => {
+  err ? console.log(err) : console.log(`bb started successfully`);
+});
 
 module.exports = db;

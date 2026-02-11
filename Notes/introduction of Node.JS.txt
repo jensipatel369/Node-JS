@@ -183,10 +183,10 @@ MVC (Model-View-Controller) is a software design pattern that separates an appli
 ----------------------------
 JWT :- JSON Web tokens
 
-JSON 3 part in divaded
+JSON 3 part in divided
 1. header
 2. payload
 3. security / signature
-
 ----------------------------
+SMTP :- Simple Mail Transfer Protocol
 ----------------------------
