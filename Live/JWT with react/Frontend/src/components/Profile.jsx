@@ -17,7 +17,7 @@ export default function Profile() {
     }, [])
 
     const handleProfile = async () => {
-        await axios.get("http://localhost:2312/profile", {
+        await axios.get("https://node-js-3-n92m.onrender.com/profile", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

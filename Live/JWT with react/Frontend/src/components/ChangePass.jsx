@@ -18,7 +18,7 @@ export default function ChangePass() {
     const handleChangePass = async (e) => {
         e.preventDefault();
         if (formdata.newPass == formdata.confirmPass) {
-            await axios.post("http://localhost:2312/changePass", formdata, {
+            await axios.post("https://node-js-3-n92m.onrender.com/changePass", formdata, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

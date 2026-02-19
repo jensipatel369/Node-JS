@@ -16,7 +16,7 @@ export default function ForgetPass() {
 
   const sendOtp = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:2312/forgetPass", formdata, {withCredentials: true}).then((res) => {
+    await axios.post("https://node-js-3-n92m.onrender.com/forgetPass", formdata, {withCredentials: true}).then((res) => {
       if(res.data.msg === "OTP sended Successfully !"){
         alert(res.data.msg)
         navigate("/verifyPass")
