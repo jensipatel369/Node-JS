@@ -15,7 +15,7 @@ export default function Register() {
 
     const handleRegister = async (e) => {
         e.preventDefault()
-        await axios.post("http://localhost:2312/register", formdata).then((res) => {
+        await axios.post("https://node-js-3-n92m.onrender.com/register", formdata).then((res) => {
             alert(res.data.msg)
             navigate("/")
         })

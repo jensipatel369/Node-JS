@@ -17,7 +17,7 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    let res = await axios.post("http://localhost:2312/login", formdata)
+    let res = await axios.post("https://node-js-3-n92m.onrender.com/login", formdata)
     if (res.data.auth) {
       alert(res.data.msg);
       localStorage.setItem("token", res.data.token);
