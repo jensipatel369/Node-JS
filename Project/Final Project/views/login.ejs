@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Login — Admin Panel</title>
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+        :root {
+            --bg-base: #0d0f14;
+            --bg-surface: #13161e;
+            --bg-elevated: #1a1e2a;
+            --bg-card: #1e2333;
+            --border: rgba(255,255,255,0.07);
+            --indigo: #6366f1;
+            --indigo-light: #818cf8;
+            --amber: #f59e0b;
+            --text-primary: #f0f2ff;
+            --text-secondary: #8892b0;
+            --text-muted: #4a5568;
+            --success: #10b981;
+            --cyan: #06b6d4;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-base);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background decoration */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -200px; right: -200px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -200px; left: -200px;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .auth-outer {
+            display: flex;
+            width: 100%;
+            max-width: 960px;
+            min-height: 540px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+            position: relative;
+            z-index: 1;
+            margin: 20px;
+        }
+
+        /* Left decorative panel */
+        .auth-panel-left {
+            flex: 1;
+            background: linear-gradient(160deg, #0f1729 0%, #12102a 50%, #0d1520 100%);
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .auth-panel-left::before {
+            content: '';
+            position: absolute;
+            top: -100px; left: -100px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 65%);
+        }
+        .auth-panel-left::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; right: -80px;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 65%);
+        }
+
+        .panel-brand {
+            position: relative; z-index: 1;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .panel-brand-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--indigo), var(--amber));
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; font-weight: 800; color: #fff;
+            font-family: 'Syne', sans-serif;
+        }
+        .panel-brand-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .panel-tagline {
+            position: relative; z-index: 1;
+        }
+        .panel-tagline h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+        .panel-tagline h2 span { color: var(--indigo-light); }
+        .panel-tagline p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 280px;
+        }
+
+        .panel-stats {
+            position: relative; z-index: 1;
+            display: flex; gap: 24px;
+        }
+        .stat-pill {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px;
+        }
+        .stat-pill .num {
+            font-family: 'Syne', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .stat-pill .lbl {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Right form panel */
+        .auth-panel-right {
+            width: 400px;
+            flex-shrink: 0;
+            background: var(--bg-card);
+            padding: 48px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .auth-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        .auth-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .field-wrap {
+            margin-bottom: 16px;
+        }
+        .field-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
+        }
+        .field-input-group {
+            display: flex;
+            align-items: center;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .field-input-group:focus-within {
+            border-color: rgba(99,102,241,0.5);
+            box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
+        }
+        .field-icon {
+            padding: 0 14px;
+            color: var(--text-muted);
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .field-input-group input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 11px 14px 11px 0;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .field-input-group input::placeholder { color: var(--text-muted); }
+
+        .auth-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn-auth-primary {
+            padding: 11px 24px;
+            background: var(--indigo);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .btn-auth-primary:hover { background: var(--indigo-light); transform: translateY(-1px); }
+
+        .btn-auth-ghost {
+            padding: 10px 18px;
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 13px;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .btn-auth-ghost:hover { border-color: var(--indigo); color: var(--indigo); }
+
+        .btn-auth-text {
+            background: none; border: none;
+            color: var(--text-muted);
+            font-size: 12px;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            transition: color 0.2s;
+        }
+        .btn-auth-text:hover { color: var(--amber); }
+
+        #recoverform { display: none; }
+        #recoverform p { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
+
+        @media (max-width: 700px) {
+            .auth-panel-left { display: none; }
+            .auth-panel-right { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader" style="display:none;"></div>
+
+    <div class="auth-outer">
+        <!-- Left decorative panel -->
+        <div class="auth-panel-left">
+            <div class="panel-brand">
+                <span class="panel-brand-name">E - Commerce</span>
+            </div>
+            <div class="panel-tagline">
+                <h2>Manage your <span>business</span> with precision.</h2>
+                <p>A powerful admin dashboard to control products, categories, users and more — all in one place.</p>
+            </div>
+            <div class="panel-stats">
+                <div class="stat-pill">
+                    <div class="num">2.5k</div>
+                    <div class="lbl">Users</div>
+                </div>
+                <div class="stat-pill">
+                    <div class="num">9.5k</div>
+                    <div class="lbl">Orders</div>
+                </div>
+                <div class="stat-pill">
+                    <div class="num">99.9%</div>
+                    <div class="lbl">Uptime</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right form panel -->
+        <div class="auth-panel-right">
+            <div id="loginform">
+                <div style="text-align:center; margin-bottom:28px;">
+                </div>
+                <div class="auth-title">Welcome back</div>
+                <div class="auth-subtitle">Sign in to your admin account</div>
+
+                <form class="form-horizontal" id="loginform" action="/login" method="post">
+                    <div class="field-wrap">
+                        <label class="field-label">Email Address</label>
+                        <div class="field-input-group">
+                            <span class="field-icon"><i class="ti-user"></i></span>
+                            <input type="text" placeholder="admin@example.com" name="email" required />
+                        </div>
+                    </div>
+                    <div class="field-wrap">
+                        <label class="field-label">Password</label>
+                        <div class="field-input-group">
+                            <span class="field-icon"><i class="ti-lock"></i></span>
+                            <input type="password" placeholder="Enter your password" name="password" required />
+                        </div>
+                    </div>
+
+                    <div class="auth-actions">
+                        <a href="/register" class="btn-auth-ghost"><i class="fa fa-arrow-left"></i> Register</a>
+                        <button class="btn-auth-text" id="to-recover" type="button">Forgot password?</button>
+                        <button class="btn-auth-primary" type="submit"><i class="fa fa-sign-in"></i> Sign In</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="recoverform">
+                <div class="auth-title">Reset Password</div>
+                <p>Enter your email and we'll send recovery instructions.</p>
+
+                <form method="post" action="/forgetPass">
+                    <div class="field-wrap">
+                        <label class="field-label">Email Address</label>
+                        <div class="field-input-group">
+                            <span class="field-icon"><i class="ti-email"></i></span>
+                            <input type="text" name="email" placeholder="your@email.com" />
+                        </div>
+                    </div>
+                    <div class="auth-actions">
+                        <a class="btn-auth-ghost" href="#" id="to-login"><i class="fa fa-arrow-left"></i> Back to Login</a>
+                        <button class="btn-auth-primary" type="submit">Send Reset Link</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        $('[data-toggle="tooltip"]').tooltip();
+        $(".preloader").fadeOut();
+        $('#to-recover').on("click", function () {
+            $("#loginform").slideUp();
+            $("#recoverform").fadeIn();
+        });
+        $('#to-login').click(function () {
+            $("#recoverform").hide();
+            $("#loginform").fadeIn();
+        });
+    </script>
+</body>
+</html>

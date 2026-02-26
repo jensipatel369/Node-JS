@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Dashboard — Admin Panel</title>
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body data-theme="dark">
+    <div class="preloader" style="display:none;"></div>
+    <div id="main-wrapper">
+        <%-include("header")%>
+        <%-include("aside")%>
+
+        <div class="page-wrapper">
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Dashboard</h4>
+                        <div class="ml-auto text-right">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <!-- Stat Cards -->
+                <div class="row" style="margin-bottom:20px;">
+                    <div class="col-md-6 col-lg-2" style="margin-bottom:16px;">
+                        <div class="card card-hover" style="margin:0;">
+                            <div class="box bg-cyan" style="background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(6,182,212,0.05));border:1px solid rgba(6,182,212,0.3);padding:20px;border-radius:12px;">
+                                <h1 class="font-light text-white" style="font-size:24px;"><i class="mdi mdi-view-dashboard"></i></h1>
+                                <h6 class="text-white" style="font-size:11px;letter-spacing:0.8px;text-transform:uppercase;">Dashboard</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" style="margin-bottom:16px;">
+                        <div class="card card-hover" style="margin:0;">
+                            <div class="box bg-success" style="background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(16,185,129,0.05));border:1px solid rgba(16,185,129,0.3);padding:20px;border-radius:12px;">
+                                <h1 class="font-light text-white" style="font-size:24px;"><i class="mdi mdi-chart-areaspline"></i></h1>
+                                <h6 class="text-white" style="font-size:11px;letter-spacing:0.8px;text-transform:uppercase;">Charts</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2" style="margin-bottom:16px;">
+                        <div class="card card-hover" style="margin:0;">
+                            <div class="box bg-warning" style="background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(245,158,11,0.05));border:1px solid rgba(245,158,11,0.3);padding:20px;border-radius:12px;">
+                                <h1 class="font-light text-white" style="font-size:24px;"><i class="mdi mdi-collage"></i></h1>
+                                <h6 class="text-white" style="font-size:11px;letter-spacing:0.8px;text-transform:uppercase;">Widgets</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2" style="margin-bottom:16px;">
+                        <div class="card card-hover" style="margin:0;">
+                            <div class="box bg-danger" style="background:linear-gradient(135deg,rgba(239,68,68,0.2),rgba(239,68,68,0.05));border:1px solid rgba(239,68,68,0.3);padding:20px;border-radius:12px;">
+                                <h1 class="font-light text-white" style="font-size:24px;"><i class="mdi mdi-border-outside"></i></h1>
+                                <h6 class="text-white" style="font-size:11px;letter-spacing:0.8px;text-transform:uppercase;">Tables</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2" style="margin-bottom:16px;">
+                        <div class="card card-hover" style="margin:0;">
+                            <div class="box bg-info" style="background:linear-gradient(135deg,rgba(99,102,241,0.2),rgba(99,102,241,0.05));border:1px solid rgba(99,102,241,0.3);padding:20px;border-radius:12px;">
+                                <h1 class="font-light text-white" style="font-size:24px;"><i class="mdi mdi-arrow-all"></i></h1>
+                                <h6 class="text-white" style="font-size:11px;letter-spacing:0.8px;text-transform:uppercase;">Full Width</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" style="margin-bottom:16px;">
+                        <div class="card card-hover" style="margin:0;">
+                            <div class="box bg-danger" style="background:linear-gradient(135deg,rgba(239,68,68,0.2),rgba(239,68,68,0.05));border:1px solid rgba(239,68,68,0.3);padding:20px;border-radius:12px;">
+                                <h1 class="font-light text-white" style="font-size:24px;"><i class="mdi mdi-receipt"></i></h1>
+                                <h6 class="text-white" style="font-size:11px;letter-spacing:0.8px;text-transform:uppercase;">Forms</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2" style="margin-bottom:16px;">
+                        <div class="card card-hover" style="margin:0;">
+                            <div class="box bg-info" style="background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(6,182,212,0.05));border:1px solid rgba(6,182,212,0.3);padding:20px;border-radius:12px;">
+                                <h1 class="font-light text-white" style="font-size:24px;"><i class="mdi mdi-relative-scale"></i></h1>
+                                <h6 class="text-white" style="font-size:11px;letter-spacing:0.8px;text-transform:uppercase;">Buttons</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2" style="margin-bottom:16px;">
+                        <div class="card card-hover" style="margin:0;">
+                            <div class="box bg-cyan" style="background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(6,182,212,0.05));border:1px solid rgba(6,182,212,0.3);padding:20px;border-radius:12px;">
+                                <h1 class="font-light text-white" style="font-size:24px;"><i class="mdi mdi-pencil"></i></h1>
+                                <h6 class="text-white" style="font-size:11px;letter-spacing:0.8px;text-transform:uppercase;">Elements</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2" style="margin-bottom:16px;">
+                        <div class="card card-hover" style="margin:0;">
+                            <div class="box bg-success" style="background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(16,185,129,0.05));border:1px solid rgba(16,185,129,0.3);padding:20px;border-radius:12px;">
+                                <h1 class="font-light text-white" style="font-size:24px;"><i class="mdi mdi-calendar-check"></i></h1>
+                                <h6 class="text-white" style="font-size:11px;letter-spacing:0.8px;text-transform:uppercase;">Calendar</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2" style="margin-bottom:16px;">
+                        <div class="card card-hover" style="margin:0;">
+                            <div class="box bg-warning" style="background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(245,158,11,0.05));border:1px solid rgba(245,158,11,0.3);padding:20px;border-radius:12px;">
+                                <h1 class="font-light text-white" style="font-size:24px;"><i class="mdi mdi-alert"></i></h1>
+                                <h6 class="text-white" style="font-size:11px;letter-spacing:0.8px;text-transform:uppercase;">Errors</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Site Analysis -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Site Analysis</h4>
+                                        <h5 class="card-subtitle">Overview of Latest Month</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <div class="flot-chart">
+                                            <div class="flot-chart-content" id="flot-line-chart"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="bg-dark p-10 text-white text-center" style="background:var(--bg-elevated)!important;border-radius:10px;margin-bottom:10px;">
+                                                    <i class="fa fa-user m-b-5 font-16" style="color:var(--indigo-light);"></i>
+                                                    <h5 class="m-b-0 m-t-5">2540</h5>
+                                                    <small class="font-light" style="color:var(--text-muted);font-size:11px;">Total Users</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="bg-dark p-10 text-white text-center" style="background:var(--bg-elevated)!important;border-radius:10px;margin-bottom:10px;">
+                                                    <i class="fa fa-plus m-b-5 font-16" style="color:var(--success);"></i>
+                                                    <h5 class="m-b-0 m-t-5">120</h5>
+                                                    <small class="font-light" style="color:var(--text-muted);font-size:11px;">New Users</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 m-t-15">
+                                                <div class="bg-dark p-10 text-white text-center" style="background:var(--bg-elevated)!important;border-radius:10px;margin-bottom:10px;">
+                                                    <i class="fa fa-cart-plus m-b-5 font-16" style="color:var(--amber);"></i>
+                                                    <h5 class="m-b-0 m-t-5">656</h5>
+                                                    <small class="font-light" style="color:var(--text-muted);font-size:11px;">Total Shop</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 m-t-15">
+                                                <div class="bg-dark p-10 text-white text-center" style="background:var(--bg-elevated)!important;border-radius:10px;margin-bottom:10px;">
+                                                    <i class="fa fa-tag m-b-5 font-16" style="color:var(--cyan);"></i>
+                                                    <h5 class="m-b-0 m-t-5">9540</h5>
+                                                    <small class="font-light" style="color:var(--text-muted);font-size:11px;">Total Orders</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 m-t-15">
+                                                <div class="bg-dark p-10 text-white text-center" style="background:var(--bg-elevated)!important;border-radius:10px;margin-bottom:10px;">
+                                                    <i class="fa fa-table m-b-5 font-16" style="color:var(--danger);"></i>
+                                                    <h5 class="m-b-0 m-t-5">100</h5>
+                                                    <small class="font-light" style="color:var(--text-muted);font-size:11px;">Pending</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 m-t-15">
+                                                <div class="bg-dark p-10 text-white text-center" style="background:var(--bg-elevated)!important;border-radius:10px;margin-bottom:10px;">
+                                                    <i class="fa fa-globe m-b-5 font-16" style="color:var(--indigo-light);"></i>
+                                                    <h5 class="m-b-0 m-t-5">8540</h5>
+                                                    <small class="font-light" style="color:var(--text-muted);font-size:11px;">Online</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer text-center">
+                All Rights Reserved by AdminPro. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+            </footer>
+        </div>
+    </div>
+
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="assets/extra-libs/sparkline/sparkline.js"></script>
+    <script src="dist/js/waves.js"></script>
+    <script src="dist/js/sidebarmenu.js"></script>
+    <script src="dist/js/custom.min.js"></script>
+    <script src="assets/libs/flot/excanvas.js"></script>
+    <script src="assets/libs/flot/jquery.flot.js"></script>
+    <script src="assets/libs/flot/jquery.flot.pie.js"></script>
+    <script src="assets/libs/flot/jquery.flot.time.js"></script>
+    <script src="assets/libs/flot/jquery.flot.stack.js"></script>
+    <script src="assets/libs/flot/jquery.flot.crosshair.js"></script>
+    <script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="dist/js/pages/chart/chart-page-init.js"></script>
+</body>
+</html>

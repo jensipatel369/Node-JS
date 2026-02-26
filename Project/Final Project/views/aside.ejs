@@ -1,0 +1,219 @@
+<aside class="custom-sidebar" id="custom-sidebar">
+  <style>
+    .custom-sidebar {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      width: 260px;
+      height: calc(100vh - 64px);
+      background: var(--bg-surface, #13161e);
+      border-right: 1px solid var(--border, rgba(255,255,255,0.07));
+      overflow-y: auto;
+      overflow-x: hidden;
+      z-index: 999;
+      padding: 16px 0 24px;
+      transition: width 0.3s;
+    }
+    .custom-sidebar::-webkit-scrollbar { width: 3px; }
+    .custom-sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    .sidebar-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted, #4a5568);
+      padding: 16px 20px 6px;
+    }
+
+    .sidebar-nav-item {
+      position: relative;
+    }
+
+    .sidebar-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 20px;
+      color: var(--text-secondary, #8892b0);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      border-radius: 0;
+      transition: all 0.15s;
+      cursor: pointer;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .sidebar-nav-link::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 4px; bottom: 4px;
+      width: 3px;
+      background: var(--indigo, #6366f1);
+      border-radius: 0 3px 3px 0;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .sidebar-nav-link:hover,
+    .sidebar-nav-link.active {
+      color: var(--text-primary, #f0f2ff);
+      background: rgba(99,102,241,0.07);
+    }
+
+    .sidebar-nav-link.active::before { opacity: 1; }
+
+    .sidebar-nav-link i {
+      font-size: 17px;
+      width: 20px;
+      text-align: center;
+      flex-shrink: 0;
+      color: var(--text-muted, #4a5568);
+      transition: color 0.15s;
+    }
+    .sidebar-nav-link:hover i,
+    .sidebar-nav-link.active i { color: var(--indigo, #6366f1); }
+
+    .sidebar-nav-link .arrow {
+      margin-left: auto;
+      font-size: 11px;
+      transition: transform 0.25s;
+    }
+    .sidebar-nav-link.expanded .arrow { transform: rotate(90deg); }
+
+    /* Sub-menu */
+    .sidebar-submenu {
+      display: none;
+      background: rgba(0,0,0,0.15);
+      border-left: 2px solid rgba(99,102,241,0.2);
+      margin-left: 32px;
+      border-radius: 0 0 8px 8px;
+    }
+    .sidebar-submenu.open { display: block; }
+
+    .sidebar-submenu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      color: var(--text-muted, #4a5568);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.15s;
+    }
+    .sidebar-submenu a:hover { color: var(--indigo-light, #818cf8); }
+    .sidebar-submenu a i { font-size: 14px; }
+
+    /* Dashboard highlight */
+    .sidebar-nav-link.dash-link {
+      margin: 0 12px;
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .sidebar-nav-link.dash-link.active {
+      background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(99,102,241,0.08));
+      border: 1px solid rgba(99,102,241,0.2);
+    }
+    .sidebar-nav-link.dash-link::before { display: none; }
+  </style>
+
+  <div class="sidebar-section-label">Main</div>
+
+  <div class="sidebar-nav-item">
+    <a class="sidebar-nav-link dash-link" href="/dashboard">
+      <i class="mdi mdi-view-dashboard"></i>
+      <span class="hide-menu">Dashboard</span>
+    </a>
+  </div>
+
+  <div class="sidebar-section-label" style="margin-top:8px;">Management</div>
+
+  <!-- Admin -->
+  <div class="sidebar-nav-item">
+    <div class="sidebar-nav-link has-arrow" onclick="toggleSubmenu(this)">
+      <i class="mdi mdi-account-multiple"></i>
+      <span class="hide-menu">Admin</span>
+      <i class="fa fa-chevron-right arrow"></i>
+    </div>
+    <div class="sidebar-submenu collapse first-level">
+      <a href="/addAdmin"><i class="mdi mdi-account-plus"></i><span class="hide-menu">Add Admin</span></a>
+      <a href="/viewAdmin"><i class="mdi mdi-account-details"></i><span class="hide-menu">View Admin</span></a>
+    </div>
+  </div>
+
+  <!-- Category -->
+  <div class="sidebar-nav-item">
+    <div class="sidebar-nav-link has-arrow" onclick="toggleSubmenu(this)">
+      <i class="mdi mdi-tag-multiple"></i>
+      <span class="hide-menu">Category</span>
+      <i class="fa fa-chevron-right arrow"></i>
+    </div>
+    <div class="sidebar-submenu collapse first-level">
+      <a href="/category/addCat"><i class="mdi mdi-tag-plus"></i><span class="hide-menu">Add Category</span></a>
+      <a href="/category/viewCat"><i class="mdi mdi-format-list-bulleted"></i><span class="hide-menu">View Category</span></a>
+    </div>
+  </div>
+
+  <!-- Sub Category -->
+  <div class="sidebar-nav-item">
+    <div class="sidebar-nav-link has-arrow" onclick="toggleSubmenu(this)">
+      <i class="mdi mdi-sitemap"></i>
+      <span class="hide-menu">Sub Category</span>
+      <i class="fa fa-chevron-right arrow"></i>
+    </div>
+    <div class="sidebar-submenu collapse first-level">
+      <a href="/subCategory/addSubCat"><i class="mdi mdi-plus-circle-outline"></i><span class="hide-menu">Add Sub Category</span></a>
+      <a href="/subCategory/viewSubCat"><i class="mdi mdi-view-list"></i><span class="hide-menu">View Sub Category</span></a>
+    </div>
+  </div>
+
+  <!-- Products -->
+  <div class="sidebar-nav-item">
+    <div class="sidebar-nav-link has-arrow" onclick="toggleSubmenu(this)">
+      <i class="mdi mdi-package-variant-closed"></i>
+      <span class="hide-menu">Products</span>
+      <i class="fa fa-chevron-right arrow"></i>
+    </div>
+    <div class="sidebar-submenu collapse first-level">
+      <a href="/products/addProduct"><i class="mdi mdi-plus-box-outline"></i><span class="hide-menu">Add Product</span></a>
+      <a href="/products/viewProduct"><i class="mdi mdi-store"></i><span class="hide-menu">View Products</span></a>
+    </div>
+  </div>
+
+  <script>
+    function toggleSubmenu(el) {
+      var arrow = el;
+      var submenu = el.nextElementSibling;
+      if (!submenu) return;
+      var isOpen = submenu.classList.contains('open');
+      // close all
+      document.querySelectorAll('.sidebar-submenu').forEach(function(m) {
+        m.classList.remove('open');
+      });
+      document.querySelectorAll('.sidebar-nav-link.has-arrow').forEach(function(l) {
+        l.classList.remove('expanded');
+      });
+      if (!isOpen) {
+        submenu.classList.add('open');
+        arrow.classList.add('expanded');
+      }
+    }
+    // auto-open current
+    document.addEventListener('DOMContentLoaded', function() {
+      var path = window.location.pathname;
+      document.querySelectorAll('.sidebar-submenu a').forEach(function(a) {
+        if (a.href.includes(path) && path !== '/') {
+          var menu = a.closest('.sidebar-submenu');
+          var link = menu.previousElementSibling;
+          if (menu) menu.classList.add('open');
+          if (link) link.classList.add('expanded');
+        }
+      });
+      if (path === '/dashboard') {
+        document.querySelector('.dash-link') && document.querySelector('.dash-link').classList.add('active');
+      }
+    });
+  </script>
+</aside>

@@ -127,7 +127,16 @@ Other Databases:-
 4.Data Validation – Galat data save hone se rokta hai.
 5.Middleware (Hooks) – Save ya update se pehle/baad code run karne deta hai.
 ----------------------------
+19. What is MVC?
+-> MVC ek tarika hai application ko structured tareeke se banane ka jisme data, UI aur logic alag-alag handle hote hain.
 ----------------------------
+20. JWT :- JSON Web tokens
+
+JSON 3 part in divided
+1. header
+2. payload
+3. security / signature
 ----------------------------
-----------------------------
+21. SMTP :- Simple Mail Transfer Protocol
+
 
